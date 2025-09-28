@@ -1,137 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Hasini</title>
-  <style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HASINI</title>
+<style>
+    /* General body styling */
     body {
-      margin: 0;
-      font-family: Inter, sans-serif;
-      background: #F3E5F5;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      text-align: center;
+        font-family: Arial, sans-serif;
+        background-color: #ffe6f0; /* light pink background */
+        margin: 0;
+        padding: 0;
     }
-    .card {
-      background: #fff;
-      padding: 30px;
-      border-radius: 16px;
-      box-shadow: 0 6px 20px rgba(0,0,0,.1);
-      max-width: 500px;
-      width: 100%;
+
+    /* Header with stylish font */
+    header {
+        font-family: "Lucida Calligraphy", "Lucida Handwriting", cursive;
+        color: #ff66b2; /* pink color */
+        text-align: center;
+        font-size: 42px;
+        margin-top: 20px;
     }
-    h1 {
-      color: #6A1B9A;
-      margin-bottom: 20px;
+
+    /* Landing page container: flex layout for profile + about me */
+    #landing {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        width: 95%;
+        max-width: 1100px;
+        margin: 40px auto;
     }
-    input, button {
-      padding: 12px;
-      border-radius: 10px;
-      border: 1px solid #ddd;
-      font-size: 15px;
-      margin: 5px 0;
-      width: calc(100% - 24px); /* adjusted padding calculation */
+
+    /* Profile picture styling */
+    .profile-pic {
+        width: 220px;
+        height: 220px;
+        object-fit: cover;
+        border-radius: 50%; /* circle shape */
+        margin-right: 40px;
+        flex-shrink: 0;
     }
-    p {
-      color: black;
-      line-height: 1.5;
+
+    /* About me section next to profile */
+    .about-me {
+        flex: 1;
     }
-    .btn {
-      background: linear-gradient(90deg, #8E24AA, #AB47BC);
-      border: 0;
-      color: #fff;
-      font-weight: bold;
-      cursor: pointer;
+
+    /* Headings inside About Me */
+    .about-me h2 {
+        color: #ff66b2; /* pink headings */
+        font-size: 28px;
+        margin-top: 0;
     }
-    ul {
-      text-align: left;
-      margin: 10px 0;
-      padding-left: 20px;
+
+    /* Paragraph text styling */
+    .about-me p {
+        font-size: 18px;
+        line-height: 1.8;
     }
-    .hidden {
-      display: none;
+
+    /* List items inside About Me */
+    .about-me ul {
+        list-style-type: disc;
+        margin-left: 20px;
+        font-size: 18px;
+        line-height: 1.8;
     }
-  </style>
+
+    /* Buttons under About Me */
+    .buttons {
+        margin-top: 20px;
+    }
+
+    .buttons button {
+        padding: 14px 30px;
+        margin: 10px 10px 0 0;
+        border: none;
+        border-radius: 8px;
+        background-color: #ff66b2;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .buttons button:hover {
+        background-color: #e055a3;
+    }
+
+    /* Blocks for Education and Hobbies */
+    .block {
+        width: 85%;
+        max-width: 900px;
+        margin: 40px auto;
+        background-color: #fff;
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0px 0px 20px rgba(0,0,0,0.15);
+        display: none; /* hidden by default */
+        text-align: left;
+        min-height: 450px;
+        font-size: 20px;
+        line-height: 1.8;
+    }
+
+    /* Headings inside blocks */
+    .block h2 {
+        font-size: 28px;
+        margin-bottom: 15px;
+        color: #ff66b2;
+    }
+
+    /* Lists inside blocks */
+    .block ul {
+        margin-left: 20px;
+        font-size: 20px;
+        line-height: 2;
+    }
+
+    /* Back to Home button at the bottom */
+    .block .buttons {
+        margin-top: 30px;
+    }
+
+    /* Show active block */
+    .block.active {
+        display: block;
+    }
+
+    /* Responsive for smaller screens */
+    @media (max-width: 800px) {
+        #landing {
+            flex-direction: column;
+            align-items: center;
+        }
+        .profile-pic {
+            margin: 0 0 20px 0;
+        }
+        .about-me {
+            width: 90%;
+        }
+    }
+</style>
 </head>
 <body>
 
-  <!-- Page 1 -->
-  <div class="card" id="page1">
-    <h1>Welcome</h1>
-    <p>
-      Hi, this is my personal website.<br>
-      I am a B.Tech Computer Science student with interests in software development, AI, DSA, and web technologies.  
-      I love solving problems and learning continuously.<br>
-      Currently learning DSA with C++.<br>
-      I have completed a course in AI using Python and built a project:  
-      <b>"MASK detection with realtime-webcam"</b>.  
-      I am eager to be an AI developer.<br>
-      Please enter your name to continue.
-    </p>
-    <input id="yourName" placeholder="Your Name">
-    <button class="btn" onclick="goToAbout()">Continue</button>
-  </div>
+<!-- Header -->
+<header>HASINI</header>
 
-  <!-- Page 2 (Education) -->
-  <div class="card hidden" id="page2">
-    <h1>Education</h1>
-    <p>Hello, <span id="visitorName"></span> 👋</p>
-    <p>
-      I am pursuing B.Tech CSE at IIIT Manipur.<br>
-      I completed my intermediate at Tirumala College,<br>
-      and my schooling at Sri Mahathi E.M High School.
-    </p>
-    <button class="btn" onclick="goToHobbies()">Go to My Hobbies</button><br><br>
-    <button onclick="backToHome()">Back</button>
-  </div>
+<!-- Landing Page -->
+<div id="landing">
+    <!-- Profile Picture on the left -->
+    <img src="profile.png" alt="Profile Picture" class="profile-pic">
+    
+    <!-- About Me Section -->
+    <div class="about-me">
+        <h2>Welcome!</h2>
+        <p>Hi, this is my personal website.</p>
+        <h2>ABOUT ME</h2>
+        <ul>
+            <li>I am a B.Tech Computer Science student with interests in software development, AI, DSA, and web technologies.</li>
+            <li>Currently learning DSA with C++.</li>
+            <li>Project: "MASK detection with realtime web-cam".</li>
+        </ul>
+        <!-- Buttons to navigate -->
+        <div class="buttons">
+            <button onclick="showSection('education')">Education</button>
+            <button onclick="showSection('hobbies')">Hobbies</button>
+        </div>
+    </div>
+</div>
 
-  <!-- Page 3 (Hobbies) -->
-  <div class="card hidden" id="page3">
-    <h1>My Hobbies</h1>
+<!-- Education Section -->
+<div class="block" id="education">
+    <h2>EDUCATION</h2>
     <ul>
-      <li>Competitive coding</li>
-      <li>Listening to music</li>
-      <li>Exploring tech & hackathons</li>
+        <li><strong>B.Tech:</strong> Computer Science Engineering at IIIT Manipur (2028)</li>
+        <li><strong>Intermediate:</strong> Tirumala College. Secured 98.3%</li>
+        <li><strong>High School:</strong> Sri Mahathi E.M High School. Secured 95%</li>
     </ul>
-    <button onclick="backToHome()">Back to Home</button>
-  </div>
+    <!-- Back to Home button at the bottom -->
+    <div class="buttons">
+        <button onclick="showSection('landing')">Back to Home</button>
+    </div>
+</div>
 
-  <script>
-    function goToAbout() {
-      const name = document.getElementById('yourName').value.trim();
-      if (!name) {
-        alert('Please enter your name');
-        return;
-      }
-      document.getElementById('page1').classList.add('hidden');
-      document.getElementById('page2').classList.remove('hidden');
-      document.getElementById('visitorName').innerText = escapeHtml(name);
-    }
+<!-- Hobbies Section -->
+<div class="block" id="hobbies">
+    <h2>HOBBIES</h2>
+    <ul>
+        <li>Competitive coding</li>
+        <li>Listening to music</li>
+        <li>Exploring tech & hackathons</li>
+    </ul>
+    <!-- Back to Home button at the bottom -->
+    <div class="buttons">
+        <button onclick="showSection('landing')">Back to Home</button>
+    </div>
+</div>
 
-    function goToHobbies() {
-      document.getElementById('page2').classList.add('hidden');
-      document.getElementById('page3').classList.remove('hidden');
+<!-- JavaScript to switch sections -->
+<script>
+function showSection(sectionId) {
+    // Hide all blocks and landing
+    const sections = document.querySelectorAll('.block, #landing');
+    sections.forEach(section => section.style.display = 'none');
+    // Show the selected section
+    const el = document.getElementById(sectionId);
+    if(sectionId === 'landing') {
+        el.style.display = 'flex'; // landing uses flex
+    } else {
+        el.style.display = 'block'; // other blocks
     }
+}
+</script>
 
-    function backToHome() {
-      document.getElementById('page2').classList.add('hidden');
-      document.getElementById('page3').classList.add('hidden');
-      document.getElementById('page1').classList.remove('hidden');
-    }
-
-    function escapeHtml(s) {
-      return s.replace(/[&<>"']/g, c => ({
-        '&': '&amp;',
-        '<': '&lt;',
-        '>': '&gt;',
-        '"': '&quot;',
-        "'": '&#39;'
-      }[c]));
-    }
-  </script>
 </body>
 </html>
+
+
+
 
