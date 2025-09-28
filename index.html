@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hasini</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Inter, sans-serif;
+      background: #F3E5F5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+    .card {
+      background: #fff;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(0,0,0,.1);
+      max-width: 500px;
+      width: 100%;
+    }
+    h1 {
+      color: #6A1B9A;
+      margin-bottom: 20px;
+    }
+    input, button {
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      font-size: 15px;
+      margin: 5px 0;
+      width: calc(100% - 24px); /* adjusted padding calculation */
+    }
+    p {
+      color: black;
+      line-height: 1.5;
+    }
+    .btn {
+      background: linear-gradient(90deg, #8E24AA, #AB47BC);
+      border: 0;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    ul {
+      text-align: left;
+      margin: 10px 0;
+      padding-left: 20px;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Page 1 -->
+  <div class="card" id="page1">
+    <h1>Welcome</h1>
+    <p>
+      Hi, this is my personal website.<br>
+      I am a B.Tech Computer Science student with interests in software development, AI, DSA, and web technologies.  
+      I love solving problems and learning continuously.<br>
+      Currently learning DSA with C++.<br>
+      I have completed a course in AI using Python and built a project:  
+      <b>"MASK detection with realtime-webcam"</b>.  
+      I am eager to be an AI developer.<br>
+      Please enter your name to continue.
+    </p>
+    <input id="yourName" placeholder="Your Name">
+    <button class="btn" onclick="goToAbout()">Continue</button>
+  </div>
+
+  <!-- Page 2 (Education) -->
+  <div class="card hidden" id="page2">
+    <h1>About Me</h1>
+    <p>Hello, <span id="visitorName"></span> 👋</p>
+    <p>
+      I am pursuing B.Tech CSE at IIIT Manipur.<br>
+      I completed my intermediate at Tirumala College,<br>
+      and my schooling at Sri Mahathi E.M High School.
+    </p>
+    <button class="btn" onclick="goToHobbies()">Go to My Hobbies</button><br><br>
+    <button onclick="backToHome()">Back</button>
+  </div>
+
+  <!-- Page 3 (Hobbies) -->
+  <div class="card hidden" id="page3">
+    <h1>My Hobbies</h1>
+    <ul>
+      <li>Competitive coding</li>
+      <li>Listening to music</li>
+      <li>Exploring tech & hackathons</li>
+    </ul>
+    <button onclick="backToHome()">Back to Home</button>
+  </div>
+
+  <script>
+    function goToAbout() {
+      const name = document.getElementById('yourName').value.trim();
+      if (!name) {
+        alert('Please enter your name');
+        return;
+      }
+      document.getElementById('page1').classList.add('hidden');
+      document.getElementById('page2').classList.remove('hidden');
+      document.getElementById('visitorName').innerText = escapeHtml(name);
+    }
+
+    function goToHobbies() {
+      document.getElementById('page2').classList.add('hidden');
+      document.getElementById('page3').classList.remove('hidden');
+    }
+
+    function backToHome() {
+      document.getElementById('page2').classList.add('hidden');
+      document.getElementById('page3').classList.add('hidden');
+      document.getElementById('page1').classList.remove('hidden');
+    }
+
+    function escapeHtml(s) {
+      return s.replace(/[&<>"']/g, c => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;'
+      }[c]));
+    }
+  </script>
+</body>
+</html>
+
